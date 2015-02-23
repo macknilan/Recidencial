@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% comment %}  FORMULARIO PARA LISTAR LOS CLIENTES RELACIONADOS CON EL ASESOR  {% endcomment %}
+{% block usermenu %}
+          <li><a href="{"""% url 'edituseruserprofile' %"""}">Men&uacute; Pendiente</a></li>
+{% endblock usermenu %}
+{% block content %}
+<div class="row">
+    <div class="small-4 medium-6 large-12 columns">
+        <table>
+            <caption>Compradores del Asesor {{ user.first_name }} {{ user.last_name }} </caption>
+            <thead>
+                <tr>
+                    <th>Asesor</th>
+                    <th>Nombre(s)</th>
+                    <th>Apellido paterno</th>
+                    <th>Apellido materno</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for comprador in object_list %}
+                <tr>
+                    <td>{{ comprador.userprofile }}</td>
+                    <td>{{ comprador.nombre }}</td>
+                    <td>{{ comprador.a_paterno }}</td>
+                    <td>{{ comprador.a_materno }}</td>
+                    <td>{"""{ comprador.id }"""}</td>
+                    <td><a class="fi-page-edit medium" alt="CLICK PARA EDITAR NOMBRE DEL COMPRADOR"
+                    title="CLICK PARA EDITAR NOMBRE DEL COMPRADOR"
+                     href="{% url 'clienteupdate' slug=user.userprofile.slug pk=comprador.pk %}">
+                     {"""{ comprador.id }"""} </a></td>
+
+                </tr>
+                {% empty %}
+                    <p>El asesor no tiene clientes todav&iacute;a</p>
+                {% endfor %}
+            </tbody>
+        </table>
+    <a class="button" title="Regresar" href="{% url 'profile' slug=user.userprofile.slug %}">Regresar</a>
+    </div>
+</div>
+{% endblock content %}

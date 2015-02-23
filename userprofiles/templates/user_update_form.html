@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% comment %}  _aqui_van_los_comentarios_ {% endcomment %}
+{% block title %} Editar datos {{ user.first_name }} {{ user.last_name }} {% endblock title %}
+{% block content %}
+
+    <form enctype="multipart/form-data" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input class="button" type="submit" name="" value="Guardar">
+        <a class="button" title="Regresar" href="{% url "perfil" %}">Regresar</a>
+    </form>
+
+
+{% endblock content %}

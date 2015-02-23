@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% comment %}  _aqui_van_los_comentarios_ {% endcomment %}
+{% block title %} Perfil de {{ user.first_name }} {{ user.last_name }}  {% endblock title %}
+{% block usermenu %}
+          <li><a href="{% url 'edituseruserprofile' %}">Editar</a></li>
+{% endblock usermenu %}
+{% block content %}
+
+<div class="row">
+    <br>
+    <div class="small-2 large-4 columns">
+      <figure>
+            <img src="/media/{{ userprofile.avatar }}" alt="{{ user.username }}"/>
+            <figcaption>{{ user.username }}</figcaption>
+        </figure>
+    </div>
+    <div class="small-2 large-4 columns">
+        <div>Usuario: {{ user.username }}</div>
+        <div>Nombres(s): {{ user.first_name }}</div>
+        <div>Apellido(s): {{ user.last_name }}</div>
+        <div>Email: {{ user.email }}</div>
+        <div>Grupo: {{ userprofile.grupo }}</div>
+        <div>Ultimo acceso: {{ user.last_login|date:"l d F Y"}}, {{ user.last_login|time:"P" }}</div>
+        <br><br>        
+    </div>
+    <div class="small-2 large-4 columns">
+        <a href="{% url 'compradorcreate' slug=userprofile.slug %}" class="button">Agregar nuevo comprador</a>
+        <a href="{% url 'clienteslist' asesor=userprofile.slug %}" class="button">Compradores</a>
+    </div>
+</div><!-- -/row -->
+<div class="row">
+       
+</div><!-- -/row -->
+
+{% endblock content %}

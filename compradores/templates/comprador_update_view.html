@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% comment %}  PAGINA PARA ACTUALIZAR LOS DATOS DEL SOLO DEL COMPRADOR {% endcomment %}
+{% block usermenu %}
+          <li><a href="{"""% url 'userprofileupdate' slug=userprofile.slug %"""}">MenuPendiente</a></li>
+{% endblock usermenu %}
+{% block title %} Modificar datos de {{ comprador.nombre }} {{ comprador.a_paterno }} {% endblock title %}
+{% block content %}
+
+    <form method="POST">
+        {% csrf_token %}
+         {{form.as_p}}
+        <input class="button" type="submit" alt="Guardar y Continuar" title="Guardar y Continuar" name="" value="Guardar y Continuar">
+        <input class="button" type="reset" alt="Borrar campos" title="Borrar campos" name="" value="Borrar Campos">
+        <a class="button" title="Regresar" href="{"""% url 'profile' slug=user.userprofile.slug %"""}">Regresar</a>
+    </form>
+
+{% endblock content %}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% comment %}  _aqui_van_los_comentarios_ {% endcomment %}
+{% block usermenu %}
+          <li><a href="{"""% url 'userprofileupdate' slug=userprofile.slug %"""}">Editar</a></li>
+{% endblock usermenu %}
+{% block title %} Editar datos {{ user.first_name }} {{ user.last_name }} {% endblock title %}
+{% block content %}
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+         {{user_form.as_p}}
+         {{profile_form.as_p}}
+        <input class="button" type="submit" name="" value="Guardar">
+        <a class="button" title="Regresar" href="{% url 'profile' slug=user.userprofile.slug %}">Regresar</a>
+    </form>
+
+{% endblock content %}

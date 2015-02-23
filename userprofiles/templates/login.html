@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% comment %}  _aqui_van_los_comentarios_ {% endcomment %}
+{% block title %} Login {% endblock title %}
+{% block content %}
+
+    <div>
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" class="button" />
+        </form>
+    </div>
+
+{% endblock content %}
