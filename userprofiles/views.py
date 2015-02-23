@@ -109,7 +109,7 @@ class UserUpdateView(UpdateView):
 class UserProfileUpdateView(UpdateView):
     model = UserProfile
     fields = ['avatar', 'grupo']
-#    slug_url_kwarg = 'slug'
-#    slug_field = 'pk__userpro'
     template_name = 'userprofile_update_form.html'
     success_url = '/perfil/'
+#    slug_url_kwarg = 'slug'
+#    slug_field = 'pk__userpro'
