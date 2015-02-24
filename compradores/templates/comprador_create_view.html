@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
-{% comment %}  _aqui_van_los_comentarios_ {% endcomment %}
+{% comment %}  FORMULARIO PARA DAR DE ALTA DATOS DEL CLIENTE {% endcomment %}
 {% block usermenu %}
           <li><a href="{"""% url 'userprofileupdate' slug=userprofile.slug %"""}">MenuPendiente</a></li>
 {% endblock usermenu %}
-{% block title %} Dar de alta nuevo Comprador {{ user.first_name }} {{ user.last_name }} {% endblock title %}
+{% block title %} Dar de alta nuevo Comprador de - {{ user.first_name }} {{ user.last_name }} {% endblock title %}
 {% block content %}
 
     <form method="POST">

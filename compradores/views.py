@@ -10,6 +10,7 @@ from .forms import CompradorCreateForm
 from .models import Comprador
 from userprofiles.mixins import LoginRequiredMixin
 from userprofiles.models import UserProfile
+from casagenerales.models import CasaGeneral
 
 
 @login_required
@@ -32,14 +33,15 @@ def CompradorCreateDef(request, slug):
 
 
 class CompradorListView(LoginRequiredMixin, ListView):
-    model = Comprador
+    model = CasaGeneral
     template_name = "compradores_list.html"
+    paginate_by = 10
 
     def get_queryset(self):
         if self.kwargs.get('asesor'):
-            # queryset = Comprador.objects.filter() 
+            # queryset = Comprador.objects.filter()
             # PARA LISTAR LOS RELACIONADOS CON EL ASESOR SE TOMAN DE UNA LISTA []
-            queryset = self.model.objects.filter(userprofile__slug=self.kwargs['asesor'])
+            queryset = self.model.objects.filter(comprador__userprofile__slug=self.kwargs['asesor'])
         else:
             queryset = super(CompradorListView, self).get_queryset()
 
@@ -52,4 +54,23 @@ class CompradorUpdateView(LoginRequiredMixin, UpdateView):
     template_name = 'comprador_update_view.html'
 
     def get_success_url(self):
-        return reverse('profile', kwargs={'slug': self.object.userprofile.slug})
+        return reverse('clienteslist', kwargs={'slug': self.object.userprofile.slug})
+
+
+
+"""
+class CompradorListView(LoginRequiredMixin, ListView):
+    model = Comprador
+    template_name = "compradores_list.html"
+
+    def get_queryset(self):
+        if self.kwargs.get('asesor'):
+            # queryset = Comprador.objects.filter()
+            # PARA LISTAR LOS RELACIONADOS CON EL ASESOR SE TOMAN DE UNA LISTA []
+            queryset = self.model.objects.filter(userprofile__slug=self.kwargs['asesor'])
+        else:
+            queryset = super(CompradorListView, self).get_queryset()
+
+        return queryset
+"""
+

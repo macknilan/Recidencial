@@ -29,8 +29,10 @@ def CreateFormCasaGeneralCasaMovimientoDef(request, slug, pkslug):
     movimiento_form = CasaMovimientoForm(request.POST)
     if request.method == 'POST':
         if all([general_form.is_valid(), movimiento_form.is_valid()]):
-            general = general_form.save(commit=False)  # GUARDATE, SALVATE, PERO NO TE INSERTES EN LA B.D. - SE INSTANCIA EL OBJ
-            movimiento = movimiento_form.save(commit=False)  # GUARDATE, SALVATE, PERO NO TE INSERTES EN LA B.D. - SE INSTANCIA EL OBJ
+            # GUARDATE, SALVATE, PERO NO TE INSERTES EN LA B.D. - SE INSTANCIA EL OBJ
+            general = general_form.save(commit=False)
+            # GUARDATE, SALVATE, PERO NO TE INSERTES EN LA B.D. - SE INSTANCIA EL OBJ
+            movimiento = movimiento_form.save(commit=False)
             general.comprador = Comprador.objects.get(pk=pkslug)
             movimiento.comprador = Comprador.objects.get(pk=pkslug)
             general.save()
@@ -42,6 +44,26 @@ def CreateFormCasaGeneralCasaMovimientoDef(request, slug, pkslug):
         movimiento_form = CasaMovimientoForm()
 
     template = "general_movimientos_create_form.html"
+    return render_to_response(template, {'general_form': general_form, 'movimiento_form': movimiento_form}, context_instance=RequestContext(request))
+
+
+@login_required
+def UpdateFormCasaGeneralCasaMovimientoDef(request, slug, pkslug):
+    general = get_object_or_404(CasaGeneral, pk=pkslug)
+    movimiento = get_object_or_404(CasaMovimiento, pk=pkslug)
+    if request.method == 'POST':
+        general_form = CasaGeneralForm(request.POST, instance=general)
+        movimiento_form = CasaMovimientoForm(request.POST, instance=movimiento)
+        if all([general_form.is_valid(), movimiento_form.is_valid()]):
+            general_form.save()
+            movimiento_form.save()
+            return HttpResponseRedirect(reverse('clienteslist', kwargs={'slug': slug}))
+
+    else:
+        general_form = CasaGeneralForm(instance=general)
+        movimiento_form = CasaMovimientoForm(instance=movimiento)
+
+    template = "general_movimientos_update_form.html"
     return render_to_response(template, {'general_form': general_form, 'movimiento_form': movimiento_form}, context_instance=RequestContext(request))
 
 
