@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% comment %} SE ACTUALIZA LOS DATOS DE CasaGeneral y CasaMovimiento {% endcomment %}
+{% block usermenu %}
+          <li><a href="{"""% url 'userprofileupdate' slug=userprofile.slug %"""}">MenuPendiente</a></li>
+{% endblock usermenu %}
+{% block title %} Movimientos financierons de la casa {{ casageneral.comprador.nombre }} {% endblock title %}
+{% block content %}
+
+    <form method="POST">
+        {% csrf_token %}
+         
+        {{general_form.as_p}}
+        
+        {{movimiento_form.as_p}}
+
+        <input class="button" type="submit" name="" value="Guardar">        
+        <a class="button" title="Regresar" href="{% url 'clienteslist' slug=user.userprofile.slug %}">Regresar</a>
+    </form>
+
+{% endblock content %}
