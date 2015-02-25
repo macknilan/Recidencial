@@ -39,3 +39,9 @@ class UserProfile(SlugMixin, models.Model):
     def save(self, *args, **kwargs):
         self.slug = self.get_slug(self.user.username, UserProfile)
         super(UserProfile, self).save(*args, **kwargs)
+
+    def image_avatar_admin(self):
+        return '<img src="%s">' % self.avatar.url
+
+    image_avatar_admin.allow_tags = True
+    image_avatar_admin.admin_order_field = 'avatar'

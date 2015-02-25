@@ -11,7 +11,7 @@ class Comprador(models.Model):
     userprofile = models.ForeignKey(UserProfile)
 
     def __unicode__(self):
-        return "%s - %s - %s - %i" % (self.a_paterno, self.a_materno, self.nombre, self.id)
+        return "%s - %s - %s" % (self.a_paterno, self.a_materno, self.nombre)
         """
         return "%s  %s  %s %i" % (self.a_paterno, self.a_materno, self.nombre, self.id)
         """

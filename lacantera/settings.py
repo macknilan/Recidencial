@@ -40,6 +40,8 @@ INSTALLED_APPS = (
     'casamovimientos',
     'compradores',
     'userprofiles',
+    'mockups',
+    'django_extensions',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -92,8 +94,8 @@ STATICFILES_DIRS = (
 
 STATIC_URL = '/static/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
+MEDIA_ROOT = os.sep.join(os.path.abspath(__file__).split(os.sep)[:-2] + ['media'])
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 # AUTH_USER_MODEL = "userprofiles.UserProfile"
