@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% comment %}  _aqui_van_los_comentarios_ {% endcomment %}
-{% block title %} Perfil de {{ user.first_name }} {{ user.last_name }}  {% endblock title %}
+{% block title %} Perfil de asesor {{ user.first_name }} {{ user.last_name }}  {% endblock title %}
 {% block usermenu %}
           <li><a href="{% url 'edituseruserprofile' %}">Editar</a></li>
 {% endblock usermenu %}
@@ -8,7 +8,7 @@
 
 <div class="row">
     <br>
-    <div class="small-2 large-4 columns">
+    <div class="small-12 columns">
       <figure>
             <img src="/media/{{ userprofile.avatar }}" alt="{{ user.username }}"/>
             <figcaption>{{ user.username }}</figcaption>

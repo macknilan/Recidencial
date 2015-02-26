@@ -3,7 +3,8 @@
 {% block usermenu %}
           <li><a href="{"""% url 'userprofileupdate' slug=userprofile.slug %"""}">MenuPendiente</a></li>
 {% endblock usermenu %}
-{% block title %} Datos de la casa """{{ user.first_name }} {{ user.last_name }}""" {% endblock title %}
+<!-- {"""% block title %"""} Datos de la casa """{{ user.first_name }} {{ user.last_name }}""" {"""% endblock title %"""} -->
+{% block title %} Datos de la casa  {% endblock title %}
 {% block content %}
 
     <form method="POST">

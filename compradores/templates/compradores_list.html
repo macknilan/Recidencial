@@ -5,7 +5,7 @@
 {% endblock usermenu %}
 {% block content %}
 <div class="row">
-    <div class="small-4 medium-6 large-12 columns">
+    <div class="small-12 columns">
         <table>
             <caption>Compradores/Clientes del Asesor {{ user.first_name }} {{ user.last_name }} </caption>
             <thead>
@@ -47,6 +47,7 @@
             </tbody>
         </table>
     <a class="button" title="Regresar" href="{% url 'profile' slug=user.userprofile.slug %}">Regresar</a>
+    <a class="button" title="Regresar" href="{% url 'clientlistdetail' slug=user.userprofile.slug %}">Lista a detalle</a>
     </div>
-</div>
+</div><!-- ./row -->
 {% endblock content %}

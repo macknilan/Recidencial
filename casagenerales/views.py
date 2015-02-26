@@ -6,12 +6,12 @@ from django.core.urlresolvers import reverse, reverse_lazy
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, render_to_response, get_object_or_404
 from django.template.context import RequestContext
-from django.views.generic import CreateView
+from django.views.generic import CreateView, ListView
 from django.views.generic.edit import ModelFormMixin
 from userprofiles.mixins import LoginRequiredMixin
 from .models import CasaGeneral
 from casagenerales.forms import CasaGeneralForm
-from casamovimientos.forms import CasaMovimientoForm
+from casamovimientos.forms import CasaMovimientoForm, CasaMovimientoForm2
 from casamovimientos.models import CasaMovimiento
 from compradores.models import Comprador
 
@@ -29,7 +29,6 @@ def CreateFormCasaGeneralCasaMovimientoDef(request, slug, pkslug):
     movimiento_form = CasaMovimientoForm(request.POST)
     if request.method == 'POST':
         if all([general_form.is_valid(), movimiento_form.is_valid()]):
-            # GUARDATE, SALVATE, PERO NO TE INSERTES EN LA B.D. - SE INSTANCIA EL OBJ
             general = general_form.save(commit=False)
             # GUARDATE, SALVATE, PERO NO TE INSERTES EN LA B.D. - SE INSTANCIA EL OBJ
             movimiento = movimiento_form.save(commit=False)
@@ -53,7 +52,7 @@ def UpdateFormCasaGeneralCasaMovimientoDef(request, slug, pkslug):
     movimiento = get_object_or_404(CasaMovimiento, pk=pkslug)
     if request.method == 'POST':
         general_form = CasaGeneralForm(request.POST, instance=general)
-        movimiento_form = CasaMovimientoForm(request.POST, instance=movimiento)
+        movimiento_form = CasaMovimientoForm2(request.POST, instance=movimiento)
         if all([general_form.is_valid(), movimiento_form.is_valid()]):
             general_form.save()
             movimiento_form.save()
@@ -61,10 +60,27 @@ def UpdateFormCasaGeneralCasaMovimientoDef(request, slug, pkslug):
 
     else:
         general_form = CasaGeneralForm(instance=general)
-        movimiento_form = CasaMovimientoForm(instance=movimiento)
+        movimiento_form = CasaMovimientoForm2(instance=movimiento)
 
     template = "general_movimientos_update_form.html"
     return render_to_response(template, {'general_form': general_form, 'movimiento_form': movimiento_form}, context_instance=RequestContext(request))
+
+
+class CompradorGeneralMovimientoList(ListView):
+    model = CasaGeneral
+    # slug_url_kwarg = 'slug'
+    # slug_field = 'slug'
+    template_name = "comprador_general_movimiento_list.html"
+
+    def get_queryset(self):
+        if self.kwargs.get('slug'):
+            queryset = self.model.objects.filter(comprador__userprofile__slug=self.kwargs['slug'])
+        else:
+            queryset = super(CompradorGeneralMovimientoList, self).get_queryset()
+
+        return queryset
+
+
 
 
 """

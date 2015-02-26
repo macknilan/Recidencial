@@ -20,12 +20,22 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = '1sfjp8$_7rye6&#kg9lj@ydih+*ua)!yx)-_=op636lv^_ebck'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+
+DATE_FORMAT = '%d-%m-%Y'
+
+DATE_INPUT_FORMATS = '%d-%m-%Y'
+
 DEBUG = True
 
 TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
+USE_THOUSAND_SEPARATOR = True
+
+# NUMBER_GROUPING = 1
+
+THOUSAND_SEPARATOR = ','
 
 # Application definition
 
