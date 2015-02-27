@@ -35,7 +35,7 @@ def CompradorCreateDef(request, slug):
 class CompradorListView(LoginRequiredMixin, ListView):
     model = CasaGeneral
     template_name = "compradores_list.html"
-    paginate_by = 10
+    paginate_by = 4
 
     def get_queryset(self):
         if self.kwargs.get('asesor'):

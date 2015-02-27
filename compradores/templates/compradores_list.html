@@ -5,7 +5,7 @@
 {% endblock usermenu %}
 {% block content %}
 <div class="row">
-    <div class="small-12 columns">
+    <div class="small-10 small-centered columns">
         <table>
             <caption>Compradores/Clientes del Asesor {{ user.first_name }} {{ user.last_name }} </caption>
             <thead>
@@ -46,8 +46,36 @@
                 {% endfor %}
             </tbody>
         </table>
-    <a class="button" title="Regresar" href="{% url 'profile' slug=user.userprofile.slug %}">Regresar</a>
-    <a class="button" title="Regresar" href="{% url 'clientlistdetail' slug=user.userprofile.slug %}">Lista a detalle</a>
+        <div class="text-center">
+            {% if is_paginated %}
+                <div class="pagination-centered">
+                    <ul class="pagination">
+                        <li class="arrow unavailable"><a href="">&laquo;</a></li>
+                        {% for i in paginator.page_range %}
+                                {% if page_obj.number == i %}
+                                {% endif %}
+                        <li class="current"><a href="">{{ i }}</a></li>
+                        {% endfor %}
+                        <li class="arrow unavailable"><a href="">&raquo;</a></li>
+                    </ul>
+                </div>
+
+                {% if page_obj.has_previous %}
+                  <a href="{"""% url tutorial_list_sample %"""}?page={{ page_obj.previous_page_number }}">
+                     Antes</a>
+                {% endif %}
+                    <!-- current page -->
+                        P&aacute;gina {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                    <!-- end current page -->
+                {% if page_obj.has_next %}
+                 <a href="{"""% url tutorial_list_sample %"""}?page={{ page_obj.next_page_number }}">
+                        Sguiente</a>
+                 {% endif %}
+            {% endif %}
+        </div>
+        <br>
+        <a class="button" title="Regresar" href="{% url 'profile' slug=user.userprofile.slug %}">Regresar</a>
+        <a class="button" title="Regresar" href="{% url 'clientlistdetail' slug=user.userprofile.slug %}">Lista a detalle</a>
     </div>
 </div><!-- ./row -->
 {% endblock content %}
