@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% comment %} FORMA PARA VER EL RESUMEN DE LAS CUENTAS {% endcomment %}
+{% block usermenu %}
+          <li><a href="{"""% url 'userprofileupdate' slug=userprofile.slug %"""}">MenuPendiente</a></li>
+{% endblock usermenu %}
+{% block title %} Resumen de las cuentas {{ casageneral.comprador.nombre }} {% endblock title %}
+{% block content %}
+
+<div class="row">
+    <div class="small-12 columns">
+        <div class="container">
+            <table>
+                <caption>Resumen de posibles totales</caption>
+                <thead>
+                    <tr>
+                        <th>Monto Apartado</th>
+                        <th>Importe total de venta AUT</th>
+                        <th>Importe TOT Vendido</th>
+                        <th>Importe TOT Cobrado</th>
+                        <th>Importe TOT x Cobrar</th>
+                        <th>Total por vender</th>
+                        <th>Pago adeudo crèdito puente</th>
+                        <th>Presupuesto Comisiòn</th>
+                        <th>Faltante por pagar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>$ {{ resumen_cuentas.total_monto_apartado }}</td>
+                        <td>$ {{ resumen_cuentas.suma_aut }}</td>
+                        <td>$ {{ resumen_cuentas.suma_tot }}</td>
+                        <td>$ {{ resumen_cuentas.suma_cobrado }} </td>
+                        <td>$ {{ resumen_cuentas.suma_cobrar }} </td>
+                        <td>$ {{ resumen_cuentas.suma_vender }} </td>
+                        <td>$ {{ resumen_cuentas.suma_cret_puente }} </td>
+                        <td>$ {{ resumen_cuentas.suma_comision }} </td>
+                        <td>$ {{ resumen_cuentas.suma_pagar }} </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="text-center">
+                {% if is_paginated %}
+                    <div class="pagination-centered">
+                        <ul class="pagination">
+                            <li class="arrow unavailable"><a href="">&laquo;</a></li>
+                            {% for i in paginator.page_range %}
+                                    {% if page_obj.number == i %}
+                                    {% endif %}
+                            <li class="current"><a href="?page={{ i }}">{{ i }}</a></li>
+                            {% endfor %}
+                            <li class="arrow unavailable"><a href="">&raquo;</a></li>
+                        </ul>
+                    </div>
+                    {% if page_obj.has_previous %}
+                      <a href="?page={{ page_obj.previous_page_number }}">
+                         Antes</a>
+                    {% endif %}
+                        <!-- current page -->
+                            P&aacute;gina {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+                        <!-- end current page -->
+                    {% if page_obj.has_next %}
+                     <a href="?page={{ page_obj.next_page_number }}">
+                            Siguiente</a>
+                     {% endif %}
+                {% endif %}
+            </div><!-- ./text-center -->
+            <br>            
+            <a class="button" title="Regresar" href="{% url 'clienteslist' slug=user.userprofile.slug %}">Regresar</a>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

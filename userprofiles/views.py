@@ -29,8 +29,7 @@ class LoginView(FormView):
         return super(LoginView, self).form_valid(form)
 
     def get_context_data(self, **kwargs):  # PASAR VARIABLES AL TEMPLATE
-        context = super(LoginView, self).get_context_data(
-            **kwargs)  # SUPER DEL PADRE
+        context = super(LoginView, self).get_context_data(**kwargs)  # SUPER DEL PADRE
         is_auth = False
         name = None
 

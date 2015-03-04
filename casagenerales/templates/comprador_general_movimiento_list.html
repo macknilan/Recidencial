@@ -9,8 +9,9 @@
 
 <div class="row" style="overflow: scroll">
     <div class="small-12 columns">
-        <table class="responsive">
-            <caption>table title and/or explanatory text</caption>
+    <div class="container">
+        <table class="responsive" role="grid">
+            <caption>Tabla a detalle de clientes de Asesor</caption>
             <thead>
                 <tr>
                     <th>Nombre</th>
@@ -21,13 +22,13 @@
                     <th>Etapa</th>
                     <th>Status</th>
                     <th>Monto credito</th>
-                    <th>Fecha de apartado</th>
+                    <th>Fecha de apartado&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
                     <th>Monto apartado</th>
                     <th>Enganche</th>
                     <th>Infonavit foviste</th>
                     <th>Banco</th>
-                    <th>Fecha programada firma</th>
-                    <th>Fecha de firma</th>
+                    <th>Fecha programada firma&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                    <th>Fecha de firma&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
                     <th>Dias transcurridos</th>
                     <th>Dias de retraso</th>
                     <th>Importe tot venta</th>
@@ -56,35 +57,62 @@
                     <td>{{ casageneral.lote }}</td>
                     <td>{{ casageneral.get_etapa_display }}</td>
                     <td>{{ casageneral.get_status_display }}</td>
-                    <td>{{ casageneral.comprador.casamovimiento.monto_credito}}</td>
+                    <td>${{ casageneral.comprador.casamovimiento.monto_credito}}</td>
                     <td>{{ casageneral.comprador.casamovimiento.fecha_de_apartado  }}</td>
-                    <td>{{ casageneral.comprador.casamovimiento.monto_apartado  }}</td>
-                    <td>{{ casageneral.comprador.casamovimiento.enganche  }}</td>
-                    <td>{{ casageneral.comprador.casamovimiento.infonavit_foviste  }}</td>
-                    <td>{{ casageneral.comprador.casamovimiento.banco  }}</td>
+                    <td>${{ casageneral.comprador.casamovimiento.monto_apartado  }}</td>
+                    <td>${{ casageneral.comprador.casamovimiento.enganche  }}</td>
+                    <td>${{ casageneral.comprador.casamovimiento.infonavit_foviste  }}</td>
+                    <td>${{ casageneral.comprador.casamovimiento.banco  }}</td>
                     <td>{{ casageneral.comprador.casamovimiento.fecha_programada_firma  }}</td>
                     <td>{{ casageneral.comprador.casamovimiento.fecha_de_firma  }}</td>
                     <td>{{ casageneral.comprador.casamovimiento.dias_transcurridos  }}</td>
                     <td>{{ casageneral.comprador.casamovimiento.dias_de_retraso  }}</td>
-                    <td>{{ casageneral.comprador.casamovimiento.importe_tot_venta  }}</td>
-                    <td>{{ casageneral.comprador.casamovimiento.diferencia_a_pagar  }}</td>
-                    <td>{{ casageneral.comprador.casamovimiento.importe_tot_vendido  }}</td>
-                    <td>{{ casageneral.comprador.casamovimiento.otros_ingresos_venta  }}</td>
-                    <td>{{ casageneral.comprador.casamovimiento.importe_tot_cobrado  }}</td>
-                    <td>{{ casageneral.comprador.casamovimiento.importe_tot_cobrar  }}</td>
-                    <td>{{ casageneral.comprador.casamovimiento.importe_tot_vender  }}</td>
-                    <td>{{ casageneral.comprador.casamovimiento.pago_adeu_cret_puente  }}</td>
-                    <td>{{ casageneral.comprador.casamovimiento.base_cret_puente  }}</td>
-                    <td>{{ casageneral.comprador.casamovimiento.tipo_credito  }}</td>
-                    <td>{{ casageneral.comprador.casamovimiento.presupuesto_comision  }}</td>
-                    <td>{{ casageneral.comprador.casamovimiento.pagado_acum_comi  }}</td>
-                    <td>{{ casageneral.comprador.casamovimiento.faltante_x_pagar  }}</td>
-                    <td>{{ casageneral.comprador.casamovimiento.comi_ecu  }}</td>
+                    <td>${{ casageneral.comprador.casamovimiento.importe_tot_venta  }}</td>
+                    <td>${{ casageneral.comprador.casamovimiento.diferencia_a_pagar  }}</td>
+                    <td>${{ casageneral.comprador.casamovimiento.importe_tot_vendido  }}</td>
+                    <td>${{ casageneral.comprador.casamovimiento.otros_ingresos_venta  }}</td>
+                    <td>${{ casageneral.comprador.casamovimiento.importe_tot_cobrado  }}</td>
+                    <td>${{ casageneral.comprador.casamovimiento.importe_tot_cobrar  }}</td>
+                    <td>${{ casageneral.comprador.casamovimiento.importe_tot_vender  }}</td>
+                    <td>${{ casageneral.comprador.casamovimiento.pago_adeu_cret_puente  }}</td>
+                    <td>${{ casageneral.comprador.casamovimiento.base_cret_puente  }}</td>
+                    <td>{{ casageneral.comprador.casamovimiento.get_tipo_credito_display  }}</td>
+                    <td>${{ casageneral.comprador.casamovimiento.presupuesto_comision  }}</td>
+                    <td>${{ casageneral.comprador.casamovimiento.pagado_acum_comi  }}</td>
+                    <td>${{ casageneral.comprador.casamovimiento.faltante_x_pagar  }}</td>
+                    <td>${{ casageneral.comprador.casamovimiento.comi_ecu  }}</td>
                 </tr>
             {% endfor %}
             </tbody>
         </table>
-        <input class="button" type="submit" name="" value="Guardar">        
+        <div class="text-center">
+            {% if is_paginated %}
+                <div class="pagination-centered">
+                    <ul class="pagination">
+                        <li class="arrow unavailable"><a href="">&laquo;</a></li>
+                        {% for i in paginator.page_range %}
+                                {% if page_obj.number == i %}
+                                {% endif %}
+                        <li class="current"><a href="?page={{ i }}">{{ i }}</a></li>
+                        {% endfor %}
+                        <li class="arrow unavailable"><a href="">&raquo;</a></li>
+                    </ul>
+                </div>
+                {% if page_obj.has_previous %}
+                  <a href="?page={{ page_obj.previous_page_number }}">
+                     Antes</a>
+                {% endif %}
+                    <!-- current page -->
+                        P&aacute;gina {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+                    <!-- end current page -->
+                {% if page_obj.has_next %}
+                 <a href="?page={{ page_obj.next_page_number }}">
+                        Siguiente</a>
+                 {% endif %}
+            {% endif %}
+        </div><!-- ./text-center -->
+    </div>
+        <!-- <input class="button" type="submit" name="" value="Guardar"> -->
         <a class="button" title="Regresar" href="{% url 'clienteslist' slug=user.userprofile.slug %}">Regresar</a>
     </div>
 </div>

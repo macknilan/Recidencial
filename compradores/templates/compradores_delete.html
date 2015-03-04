@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% comment %} FORMA PARA ELIMINAR A LOS CLIENTES {% endcomment %}
+{% block usermenu %}
+          <li><a href="{"""% url 'userprofileupdate' slug=userprofile.slug %"""}">MenuPendiente</a></li>
+{% endblock usermenu %}
+{% block title %} Borrar de cliente {{ casageneral.comprador.nombre }} {% endblock title %}
+{% block content %}
+
+    <form method="POST">
+        {% csrf_token %}
+         
+        <!-- """{{ general_form.as_p }}""" -->
+        <br><br>
+        <div class="alert-box warning">CUIDADO! SE BORRARAN LOS DADOS DEL USUARIO ¿SEGURO?</div>
+        
+        {{ object.nombre }}
+        {{ object.a_paterno }}
+        {{ object.a_materno }}
+        <br><br>
+
+        <input class="button alert" type="submit" name="" value="ELIMINAR">        
+        <a class="button" title="Regresar" href="{% url 'clienteslist' slug=user.userprofile.slug %}">Regresar</a>
+    </form>
+
+{% endblock content %}

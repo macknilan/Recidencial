@@ -5,7 +5,7 @@ from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, render_to_response, get_object_or_404
 from django.template.context import RequestContext
-from django.views.generic import ListView, UpdateView
+from django.views.generic import ListView, UpdateView, DeleteView
 from .forms import CompradorCreateForm
 from .models import Comprador
 from userprofiles.mixins import LoginRequiredMixin
@@ -35,7 +35,7 @@ def CompradorCreateDef(request, slug):
 class CompradorListView(LoginRequiredMixin, ListView):
     model = CasaGeneral
     template_name = "compradores_list.html"
-    paginate_by = 4
+    paginate_by = 15
 
     def get_queryset(self):
         if self.kwargs.get('asesor'):
@@ -55,6 +55,16 @@ class CompradorUpdateView(LoginRequiredMixin, UpdateView):
 
     def get_success_url(self):
         return reverse('clienteslist', kwargs={'slug': self.object.userprofile.slug})
+
+
+
+class DeleteClienteView(LoginRequiredMixin, DeleteView):
+    model = Comprador
+    template_name = ("compradores_delete.html")
+
+    def get_success_url(self):
+        slug = self.request.user.userprofile.slug
+        return reverse('clienteslist', kwargs={'slug': slug})
 
 
 

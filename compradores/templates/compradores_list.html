@@ -19,6 +19,7 @@
                     <th>Etapa</th>
                     <th>Status</th>
                     <th>Editar</th>
+                    <th>Eliminar</th>
                 </tr>
             </thead>
             <tbody>
@@ -38,7 +39,8 @@
                     <td>{{ comprador.lote }}</td>
                     <td>{{ comprador.get_etapa_display }}</td>
                     <td>{{ comprador.get_status_display }}</td>
-                    <td><a alt="EDITAR DATOS DE LA CASA" title="EDITAR DATOS DE LA CASA" href="{% url 'casageneralupdate' slug=user.userprofile.slug pkslug=comprador.pk %}"><i class="fi-page-edit medium"></i></a></td>
+                    <td class="text-center"><a alt="EDITAR DATOS DE LA CASA" title="EDITAR DATOS DE LA CASA" href="{% url 'casageneralupdate' slug=user.userprofile.slug pkslug=comprador.pk %}"><i class="fi-page-edit medium"></i></a></td>
+                    <td class="text-center"><a alt="ELIMINAR COMPRADOR" title="ELIMINAR COMPRADOR" href="{% url 'customerdelete' slug=user.userprofile.slug pk=comprador.pk %}"><i class="fi-page-remove medium"></i></a></td>
 
                 </tr>
                 {% empty %}
@@ -54,25 +56,24 @@
                         {% for i in paginator.page_range %}
                                 {% if page_obj.number == i %}
                                 {% endif %}
-                        <li class="current"><a href="">{{ i }}</a></li>
+                        <li class="current"><a href="?page={{ i }}">{{ i }}</a></li>
                         {% endfor %}
                         <li class="arrow unavailable"><a href="">&raquo;</a></li>
                     </ul>
                 </div>
-
                 {% if page_obj.has_previous %}
-                  <a href="{"""% url tutorial_list_sample %"""}?page={{ page_obj.previous_page_number }}">
+                  <a href="?page={{ page_obj.previous_page_number }}">
                      Antes</a>
                 {% endif %}
                     <!-- current page -->
-                        P&aacute;gina {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                        P&aacute;gina {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
                     <!-- end current page -->
                 {% if page_obj.has_next %}
-                 <a href="{"""% url tutorial_list_sample %"""}?page={{ page_obj.next_page_number }}">
-                        Sguiente</a>
+                 <a href="?page={{ page_obj.next_page_number }}">
+                        Siguiente</a>
                  {% endif %}
             {% endif %}
-        </div>
+        </div><!-- ./text-center -->
         <br>
         <a class="button" title="Regresar" href="{% url 'profile' slug=user.userprofile.slug %}">Regresar</a>
         <a class="button" title="Regresar" href="{% url 'clientlistdetail' slug=user.userprofile.slug %}">Lista a detalle</a>
