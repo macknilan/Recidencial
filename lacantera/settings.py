@@ -25,11 +25,23 @@ DATE_FORMAT = '%d-%m-%Y'
 
 DATE_INPUT_FORMATS = '%d-%m-%Y'
 
+# _PARA PRODUCCION_
+# 
+# DEBUG = False
+# TEMPLATE_DEBUG = DEBUG
+# 
+# PARA NO PEGARLE TAN DURO A LA b.d. 
+# SESSION_ENGINE = 'django.contrib.sessions.backends.cache_db'
+# 
+# A UN MAS -- SI NO NOS IMPORTA QUE SE PIERDA LA SESION
+# SESSION_ENGINE = 'django.contrib.sessions.backends.cache' 
+# 
+
 DEBUG = True
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost']
 
 USE_THOUSAND_SEPARATOR = True
 
@@ -46,6 +58,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'lacantera',
     'casagenerales',
     'casamovimientos',
     'compradores',
@@ -55,6 +68,7 @@ INSTALLED_APPS = (
 )
 
 MIDDLEWARE_CLASSES = (
+    # 'django.middleware.cache.UpdateCacheMiddleware', HABILITAR EN PRODUCCION
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -62,7 +76,10 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'django.middleware.cache.FechFromCacheMiddleware', HABILITAR EN PRODUCCION
 )
+
+# CACHE_MIDDLEWARE_ANONYMOUS_ONLY = True HABILITAR EN PRODUCCION
 
 ROOT_URLCONF = 'lacantera.urls'
 
@@ -98,11 +115,21 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'lacantera/static'),
-)
+# STATICFILES_DIRS = (
+#     os.path.join(BASE_DIR, 'lacantera/static'),
+# )
+
+# STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.CacheStaticFilesStorage' en el setings.py
+
+# STATIC_ROOT = os.sep.join(os.path.abspath(__file__).split(os.sep)[:-2] + ['static'])
 
 STATIC_URL = '/static/'
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+ )
+
 
 MEDIA_ROOT = os.sep.join(os.path.abspath(__file__).split(os.sep)[:-2] + ['media'])
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -110,8 +137,3 @@ MEDIA_URL = '/media/'
 
 # AUTH_USER_MODEL = "userprofiles.UserProfile"
 
-
-# STATICFILES_FINDERS = (
-#     'django.contrib.staticfiles.finders.FileSystemFinder',
-#     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-# )
