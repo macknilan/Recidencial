@@ -63,8 +63,8 @@ INSTALLED_APPS = (
     'casamovimientos',
     'compradores',
     'userprofiles',
-    'mockups',
-    'django_extensions',
+    # 'mockups',
+    # 'django_extensions',
 )
 
 MIDDLEWARE_CLASSES = (
