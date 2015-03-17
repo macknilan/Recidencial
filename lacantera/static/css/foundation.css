@@ -6149,7 +6149,7 @@ th.hide-for-touch {
   th.show-for-print {
     display: table-cell !important; } }
 
-/*  CUSTOMIZED  *//*  CUSTOMIZED  *//*  CUSTOMIZED  *//*  CUSTOMIZED  */
+/* ------------------------------------------------------------ */
 
 .full-width {
   max-width: 1400px;
@@ -6192,4 +6192,4 @@ th.hide-for-touch {
   margin-top: .5em;
 }
 
-/*  CUSTOMIZED  *//*  CUSTOMIZED  *//*  CUSTOMIZED  *//*  CUSTOMIZED  */
+/* ------------------------------------------------------------ */
