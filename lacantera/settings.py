@@ -39,7 +39,7 @@ DATE_INPUT_FORMATS = '%d-%m-%Y'
 
 DEBUG = False
 
-TEMPLATE_DEBUG = DEBUG
+TEMPLATE_DEBUG = False
 
 ALLOWED_HOSTS = ['localhost']
 
