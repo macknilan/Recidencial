@@ -132,7 +132,7 @@ USE_TZ = True
 
 # STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.CacheStaticFilesStorage' en el setings.py
 
-STATIC_ROOT = os.sep.join(os.path.abspath(__file__).split(os.sep)[:-2] + ['static'])
+STATIC_ROOT = os.sep.join(os.path.abspath(__file__).split(os.sep)[:-2] + ['content'])
 
 STATIC_URL = '/static/'
 
