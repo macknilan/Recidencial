@@ -37,7 +37,7 @@ DATE_INPUT_FORMATS = '%d-%m-%Y'
 # SESSION_ENGINE = 'django.contrib.sessions.backends.cache' 
 # 
 
-DEBUG = True
+DEBUG = False
 
 TEMPLATE_DEBUG = True
 
@@ -132,7 +132,7 @@ USE_TZ = True
 
 # STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.CacheStaticFilesStorage' en el setings.py
 
-# STATIC_ROOT = os.sep.join(os.path.abspath(__file__).split(os.sep)[:-2] + ['static'])
+STATIC_ROOT = os.sep.join(os.path.abspath(__file__).split(os.sep)[:-2] + ['static'])
 
 STATIC_URL = '/static/'
 
