@@ -63,6 +63,7 @@ INSTALLED_APPS = (
     'casamovimientos',
     'compradores',
     'userprofiles',
+    'storages',
     # 'mockups',
     # 'django_extensions',
 )
