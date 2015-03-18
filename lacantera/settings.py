@@ -150,8 +150,8 @@ MEDIA_URL = '/media/'
 
 # AUTH_USER_MODEL = "userprofiles.UserProfile"
 
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3Storage'
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 AWS_ACCESS_KEY_ID = 'AKIAJXAL4M32HHVF3VNQ'
 AWS_SECRET_ACCESS_KEY = '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'
 AWS_STORAGE_BUCKET_NAME = 'lacantera'
-STATICFILES_STORAGE = 'storages.backends.s3boto.S3Storage'
+STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
