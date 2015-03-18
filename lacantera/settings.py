@@ -39,7 +39,7 @@ DATE_INPUT_FORMATS = '%d-%m-%Y'
 
 DEBUG = False
 
-TEMPLATE_DEBUG = False
+TEMPLATE_DEBUG = DEBUG
 
 ALLOWED_HOSTS = ['45.55.184.81']
 
@@ -130,9 +130,9 @@ USE_TZ = True
 #     os.path.join(BASE_DIR, 'lacantera/static'),
 # )
 
-STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.CachedStaticFilesStorage'  # PARA PONER CACHE LOS ARCHIVOS ESTATICOS EN PRODUCCION
+# STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.CachedStaticFilesStorage'  # PARA PONER CACHE LOS ARCHIVOS ESTATICOS EN PRODUCCION
 
-STATIC_ROOT = os.sep.join(os.path.abspath(__file__).split(os.sep)[:-2] + ['content'])  # PARA PONER CACHE LOS ARCHIVOS ESTATICOS EN PRODUCCION
+# STATIC_ROOT = os.sep.join(os.path.abspath(__file__).split(os.sep)[:-2] + ['content'])  # PARA PONER CACHE LOS ARCHIVOS ESTATICOS EN PRODUCCION
 
 STATIC_URL = '/static/'
 
@@ -144,7 +144,7 @@ STATICFILES_FINDERS = (
 
 MEDIA_ROOT = os.sep.join(os.path.abspath(__file__).split(os.sep)[:-2] + ['media'])
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 MEDIA_URL = '/media/'
 
 # AUTH_USER_MODEL = "userprofiles.UserProfile"
-
