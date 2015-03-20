@@ -41,7 +41,7 @@ DEBUG = False
 
 TEMPLATE_DEBUG = DEBUG
 
-ALLOWED_HOSTS = ['lacantera.konetl.co']
+ALLOWED_HOSTS = ['45.55.184.81']:
 
 USE_THOUSAND_SEPARATOR = True
 
