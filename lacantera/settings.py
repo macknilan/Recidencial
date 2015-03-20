@@ -18,8 +18,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '1sfjp8$_7rye6&#kg9lj@ydih+*ua)!yx)-_=op636lv^_ebck'
+<<<<<<< HEAD
 # SECRET_KEY = os.environ.get('SECRET_KEY')
 
+=======
+# SECRET_KEY = os.environ.get("SECRET_KEY")
+>>>>>>> 5af742e7e6710daf978d06eb89267d12710e9afd
 # SECURITY WARNING: don't run with debug turned on in production!
 
 DATE_FORMAT = '%d-%m-%Y'
@@ -153,8 +157,8 @@ MEDIA_URL = '/media/'
 
 ###### AWS SETTINGS
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-AWS_ACCESS_KEY_ID = 'XXXXXXXXXXXXXXXXXXXXXXXXXXX'
-AWS_SECRET_ACCESS_KEY = 'XXXXXXXXXXXXXXXXXXXXXXXXXXX'
+AWS_ACCESS_KEY_ID = 'AKIAJEV4AEHPGPGJOZRA'
+AWS_SECRET_ACCESS_KEY = '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'
 AWS_STORAGE_BUCKET_NAME = 'lacantera'
 STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 ###### END AWS SETTINGS
