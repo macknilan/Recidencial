@@ -17,8 +17,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '1sfjp8$_7rye6&#kg9lj@ydih+*ua)!yx)-_=op636lv^_ebck'
-# SECRET_KEY = os.environ.get("SECRET_KEY")
+# SECRET_KEY = '1sfjp8$_7rye6&#kg9lj@ydih+*ua)!yx)-_=op636lv^_ebck'
+SECRET_KEY = os.environ["SECRET_KEY"]
 # SECURITY WARNING: don't run with debug turned on in production!
 
 DATE_FORMAT = '%d-%m-%Y'
@@ -127,15 +127,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
-# STATICFILES_DIRS = (
-#     os.path.join(BASE_DIR, 'lacantera/static'),
-# )
+#STATICFILES_DIRS = (
+#    os.path.join(BASE_DIR, 'lacantera/static'),
+#)
 
 # STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.CachedStaticFilesStorage'  # PARA PONER CACHE LOS ARCHIVOS ESTATICOS EN PRODUCCION
 
-# STATIC_ROOT = os.sep.join(os.path.abspath(__file__).split(os.sep)[:-2] + ['content'])  # PARA PONER CACHE LOS ARCHIVOS ESTATICOS EN PRODUCCION
+# STATIC_ROOT = os.sep.join(os.path.abspath(__file__).split(os.sep)[:-2] + ['static'])  # PARA PONER CACHE LOS ARCHIVOS ESTATICOS EN PRODUCCION
 
-STATIC_URL = '/static/'
+# STATIC_URL = '/static/'
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
@@ -143,17 +143,32 @@ STATICFILES_FINDERS = (
  )  # PARA PONER CACHE LOS ARCHIVOS ESTATICOS EN PRODUCCION
 
 
-MEDIA_ROOT = os.sep.join(os.path.abspath(__file__).split(os.sep)[:-2] + ['media'])
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+#MEDIA_ROOT = os.sep.join(os.path.abspath(__file__).split(os.sep)[:-2] + ['media'])
+#MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-MEDIA_URL = '/media/'
+#MEDIA_URL = '/media/'
 
 # AUTH_USER_MODEL = "userprofiles.UserProfile"
 
-###### AWS SETTINGS
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-AWS_ACCESS_KEY_ID = 'AKIAJEV4AEHPGPGJOZRA'
-AWS_SECRET_ACCESS_KEY = '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'
+##### AWS SETTINGS
+
+AWS_ACCESS_KEY_ID = os.environ["AWS_ACCESS_KEY_ID"]
+AWS_SECRET_ACCESS_KEY = os.environ["AWS_SECRET_ACCESS_KEY"]
 AWS_STORAGE_BUCKET_NAME = 'lacantera'
-STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+
+# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+# STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+
+STATICFILES_LOCATION = 'static'
+MEDIAFILES_LOCATION = 'media'
+
+STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+
+MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
+STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, STATICFILES_LOCATION)
+
+
 ###### END AWS SETTINGS
