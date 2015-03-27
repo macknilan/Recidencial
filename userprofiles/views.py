@@ -80,7 +80,7 @@ def EditUser_UserProfileDef(request):
     profile = user.userprofile
     if request.method == 'POST':
         user_form = UserForm(request.POST, instance=user)
-        profile_form = UserProfileForm(request.POST, instance=profile)
+        profile_form = UserProfileForm(request.POST, request.FILES, instance=profile)
         if all([user_form.is_valid(), profile_form.is_valid()]):
             user_form.save()
             profile_form.save()
