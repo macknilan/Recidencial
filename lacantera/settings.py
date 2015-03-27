@@ -17,10 +17,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-<<<<<<< HEAD
 SECRET_KEY = os.environ["SECRET_KEY"]
-=======
->>>>>>> 198cb3a2a6c4cd3667a2a48adad1ea88dce77ce1
 # SECURITY WARNING: don't run with debug turned on in production!
 
 DATE_FORMAT = '%d-%m-%Y'
@@ -152,12 +149,9 @@ STATICFILES_FINDERS = (
 
 # AUTH_USER_MODEL = "userprofiles.UserProfile"
 
-<<<<<<< HEAD
 ##### AWS SETTINGS
-
 AWS_ACCESS_KEY_ID = os.environ["AWS_ACCESS_KEY_ID"]
 AWS_SECRET_ACCESS_KEY = os.environ["AWS_SECRET_ACCESS_KEY"]
-=======
 
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 
@@ -169,6 +163,4 @@ DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
 
 MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
 STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, STATICFILES_LOCATION)
-
-
 ###### END AWS SETTINGS
