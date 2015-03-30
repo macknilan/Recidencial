@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% comment %}  FORMULARIO PARA DAR DE ALTA DATOS DEL CLIENTE {% endcomment %}
 {% block usermenu %}
-          <li><a href="{"""% url 'userprofileupdate' slug=userprofile.slug %"""}">MenuPendiente</a></li>
+          <li><a href="{"""% url 'userprofileupdate' slug=userprofile.slug %"""}"><i style="vertical-align: middle; "class="fa fa-question fa-2x fa-fw"></i>Men&uacute; Pendiente</a></li>
 {% endblock usermenu %}
 {% block title %} Dar de alta nuevo Comprador de - {{ user.first_name }} {{ user.last_name }} {% endblock title %}
 {% block content %}

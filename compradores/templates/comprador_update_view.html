@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% comment %}  PAGINA PARA ACTUALIZAR LOS DATOS SOLO DEL COMPRADOR {% endcomment %}
 {% block usermenu %}
-          <li><a href="{"""% url 'userprofileupdate' slug=userprofile.slug %"""}">MenuPendiente</a></li>
+          <li><a href="{"""% url 'userprofileupdate' slug=userprofile.slug %"""}"><i style="vertical-align: middle; "class="fa fa-question fa-2x fa-fw"></i>Men&uacute; Pendiente</a></li>
 {% endblock usermenu %}
 {% block title %} Modificar datos de {{ comprador.nombre }} {{ comprador.a_paterno }} {% endblock title %}
 {% block content %}
