@@ -39,7 +39,7 @@
                     <td>{{ comprador.lote }}</td>
                     <td>{{ comprador.get_etapa_display }}</td>
                     <td>{{ comprador.get_status_display }}</td>
-                    <td class="text-center"><a alt="EDITAR DATOS DE LA CASA" title="EDITAR DATOS DE LA CASA" href="{% url 'casageneralupdate' slug=user.userprofile.slug pkslug=comprador.pk %}"><i class="fi-page-edit medium"></i></a></td>
+                    <td class="text-center"><a alt="EDITAR DATOS DE LA CASA" title="EDITAR DATOS DE LA CASA" href="{% url 'casageneralupdate' slug=user.userprofile.slug pkslug=comprador.pk %}"><i class="fa fa-pencil-square"></i></a></td>
                     <td class="text-center"><a alt="ELIMINAR COMPRADOR" title="ELIMINAR COMPRADOR" href="{% url 'customerdelete' slug=user.userprofile.slug pk=comprador.pk %}"><i class="fi-page-remove medium"></i></a></td>
 
                 </tr>
