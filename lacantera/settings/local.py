@@ -31,8 +31,13 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'lacantera/static'),
 )
 
-
+# STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.CachedStaticFilesStorage'  # PARA PONER CACHE LOS ARCHIVOS ESTATICOS EN PRODUCCION
+# STATIC_ROOT = os.sep.join(os.path.abspath(__file__).split(os.sep)[:-2] + ['static'])  # PARA PONER CACHE LOS ARCHIVOS ESTATICOS EN PRODUCCION
 STATIC_URL = '/static/'
+
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# MEDIA_ROOT = os.sep.join(os.path.abspath(__file__).split(os.sep)[:-2] + ['media'])
+MEDIA_URL = '/media/'
 
 
 STATICFILES_FINDERS = (
@@ -42,9 +47,6 @@ STATICFILES_FINDERS = (
 
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-MEDIA_URL = '/media/'
-
 
 
 
