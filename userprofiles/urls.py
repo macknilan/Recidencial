@@ -1,6 +1,6 @@
-from django.conf.urls import patterns, url
-
+from django.conf.urls import patterns, url, include
 from .views import HomeRedirectView, LoginView, ProfileView, PerfilRedirectView, EditUser_UserProfileDef
+
 
 urlpatterns = patterns('',
 
@@ -10,6 +10,7 @@ urlpatterns = patterns('',
     url(r'^profile/(?P<slug>[\w\-]+)/$', ProfileView.as_view(), name='profile'),
     url(r'^perfil/$', PerfilRedirectView.as_view(), name='perfil'),
     url(r'^edituseruserprofile/$', EditUser_UserProfileDef, name='edituseruserprofile'),
+    url(r'session_security/', include('session_security.urls')),    
 #    url(r'^userupdate/(?P<slug>[\w\-]+)/$', UserUpdateView.as_view(), name='userupdate'),
 #    url(r'^userprofileupdate/(?P<slug>[\w\-]+)/$', UserProfileUpdateView.as_view(), name='userprofileupdate'),
 #    url(r'^userprofiledetail/(?P<slug>[\w\-]+)/$', UserProfileDetailView.as_view(), name='userprofiledetail'),
