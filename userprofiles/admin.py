@@ -5,6 +5,8 @@ from django.contrib import admin
 from .models import UserProfile
 from actions import export_as_excel
 
+
+@admin.register(UserProfile)
 class UserProfileAdmin(admin.ModelAdmin):
     list_display = ('user', 'grupo', 'slug', 'image_avatar_admin', 'es_staff', )
     list_filter = ('user', 'grupo', )
@@ -25,4 +27,5 @@ class UserProfileAdmin(admin.ModelAdmin):
         return tag
     """
 
-admin.site.register(UserProfile, UserProfileAdmin)
+
+# admin.site.register(UserProfile, UserProfileAdmin)

@@ -6,6 +6,7 @@ from .models import Comprador
 from actions import export_as_excel
 
 
+@admin.register(Comprador)
 class CompradorAdmin(admin.ModelAdmin):
     list_display = ('userprofile', 'nombre', 'a_paterno', 'a_materno',)
     list_filter = ('userprofile', )
@@ -13,4 +14,4 @@ class CompradorAdmin(admin.ModelAdmin):
     actions = (export_as_excel, )
 
 
-admin.site.register(Comprador, CompradorAdmin)
+# admin.site.register(Comprador, CompradorAdmin)

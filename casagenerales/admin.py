@@ -6,6 +6,7 @@ from .models import CasaGeneral
 from actions import export_as_excel
 
 
+@admin.register(CasaGeneral)
 class CasaGeneralAdmin(admin.ModelAdmin):
     list_display = ('comprador', 'manzana', 'lote', 'etapa', 'status', )
     list_filter = ('comprador', 'manzana', 'lote', 'etapa', 'status', )
@@ -14,4 +15,4 @@ class CasaGeneralAdmin(admin.ModelAdmin):
     raw_id_fields = ('comprador', )
 
 
-admin.site.register(CasaGeneral, CasaGeneralAdmin)
+# admin.site.register(CasaGeneral, CasaGeneralAdmin)
