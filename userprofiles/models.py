@@ -3,6 +3,8 @@
 from django.contrib.auth.models import User
 from django.db import models
 from django.utils.text import slugify
+from sorl.thumbnail import get_thumbnail
+
 # from django.conf import settings
 # from django.utils.translation import ugettext_lazy as _
 
@@ -41,7 +43,7 @@ class UserProfile(SlugMixin, models.Model):
         super(UserProfile, self).save(*args, **kwargs)
 
     def image_avatar_admin(self):
-        return '<img src="%s">' % self.avatar.url
+        return '<img src="%s">' % get_thumbnail(self.avatar, '100x100', quality=80).url
 
     image_avatar_admin.allow_tags = True
     image_avatar_admin.admin_order_field = 'avatar'
