@@ -44,7 +44,6 @@ INSTALLED_APPS = (
     'compradores',
     'userprofiles',
     'session_security',
-    'sorl.thumbnail',
 )
 
 MIDDLEWARE_CLASSES = (
