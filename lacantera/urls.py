@@ -23,5 +23,5 @@ urlpatterns = patterns('',
 #        )
 
 # PARA SERVIR LOS ARCHIVOS DE MEDIA EN DESARROLLO "NO EN PRODUCCION" CUANDO DEGUB ESTA EN TRUE
-# if settings.DEBUG:
-#   urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

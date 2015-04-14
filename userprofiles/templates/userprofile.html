@@ -10,7 +10,9 @@
     <br>
     <div class="small-4 columns">
           <figure>
-                <img src="{{ userprofile.avatar.url }}" alt="{{ user.username }}"/>
+                {% load thumbnail %}
+                <!--<img src="{{ userprofile.avatar.url }}" alt="{{ user.username }}"/>-->
+                <img src="{{ userprofile.avatar|thumbnail_url:'avatar' }}" alt="{{ user.username }}"/>
                 <figcaption>{{ user.username }}</figcaption>
             </figure>
     </div>
