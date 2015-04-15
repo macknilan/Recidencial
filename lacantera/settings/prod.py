@@ -27,6 +27,7 @@ TEMPLATE_DEBUG = DEBUG
 
 INSTALLED_APPS += (
     'storages',
+    'easy_thumbnails',
 )
 
 DATABASES = {
@@ -74,29 +75,14 @@ MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
 STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, STATICFILES_LOCATION)
 # ----------END AWS SETTINGS----------
 
+# ----------easy_thumbnails----------
+THUMBNAIL_ALIASES = {
+    'userprofiles.UserProfile.avatar': {
+        'avatar': {'size': (128, 128), 'quality': 90, 'subsampling': 2},
+    },
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+THUMBNAIL_EXTENSION = 'jpg'
+THUMBNAIL_HIGH_RESOLUTION = True
+THUMBNAIL_HIGHRES_INFIX = '_2x'
+# ----------easy_thumbnails----------
