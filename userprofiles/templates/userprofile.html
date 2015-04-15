@@ -12,7 +12,7 @@
           <figure>
                 {% load thumbnail %}
                 <!--<img src="{{ userprofile.avatar.url }}" alt="{{ user.username }}"/>-->
-                <img src="{{ userprofile.avatar|thumbnail_url:'avatar' }}" alt="{{ user.username }}"/>
+                <img src="{{ userprofile.avatar.url|thumbnail_url:'avatar' }}" alt="{{ user.username }}"/>
                 <figcaption>{{ user.username }}</figcaption>
             </figure>
     </div>
