@@ -58,23 +58,6 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )  # PARA PONER CACHE LOS ARCHIVOS ESTATICOS EN PRODUCCION
 
-# ----------AWS SETTINGS----------
-AWS_ACCESS_KEY_ID = os.environ["AWS_ACCESS_KEY_ID"]
-AWS_SECRET_ACCESS_KEY = os.environ["AWS_SECRET_ACCESS_KEY"]
-AWS_STORAGE_BUCKET_NAME = 'lacantera'
-
-AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
-
-STATICFILES_LOCATION = 'static'
-MEDIAFILES_LOCATION = 'media'
-
-STATICFILES_STORAGE = 'custom_storages.StaticStorage'
-DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
-
-MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
-STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, STATICFILES_LOCATION)
-# ----------END AWS SETTINGS----------
-
 # ----------easy_thumbnails----------
 THUMBNAIL_ALIASES = {
     'userprofiles.UserProfile.avatar': {
@@ -86,3 +69,26 @@ THUMBNAIL_EXTENSION = 'jpg'
 THUMBNAIL_HIGH_RESOLUTION = True
 THUMBNAIL_HIGHRES_INFIX = '_2x'
 # ----------easy_thumbnails----------
+
+# -----------AWS SETTINGS-----------
+AWS_ACCESS_KEY_ID = os.environ["AWS_ACCESS_KEY_ID"]
+AWS_SECRET_ACCESS_KEY = os.environ["AWS_SECRET_ACCESS_KEY"]
+AWS_STORAGE_BUCKET_NAME = 'lacantera'
+
+# _________easy_thumbnails_________
+THUMBNAIL_DEFAULT_STORAGE ='custom_storages.MediaStorage'
+THUMBNAIL_BASEDIR = 'miniaturas'
+# _________easy_thumbnails_________
+
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+
+STATICFILES_LOCATION = 'static'
+MEDIAFILES_LOCATION = 'media'
+
+STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+
+MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
+STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, STATICFILES_LOCATION)
+# -----------AWS SETTINGS-----------
+
