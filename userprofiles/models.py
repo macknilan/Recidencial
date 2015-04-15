@@ -3,6 +3,9 @@
 from django.contrib.auth.models import User
 from django.db import models
 from django.utils.text import slugify
+from easy_thumbnails.fields import ThumbnailerImageField
+from easy_thumbnails.files import get_thumbnailer
+
 
 # from django.conf import settings
 # from django.utils.translation import ugettext_lazy as _
@@ -28,7 +31,8 @@ class UserProfile(SlugMixin, models.Model):
         (2, 'Grupo dos'),
         (3, 'Grupo tres'),
         )
-    avatar = models.ImageField(upload_to='avatars', blank=True)
+#    avatar = models.ImageField(upload_to='avatars', blank=True)
+    avatar = ThumbnailerImageField(upload_to='avatars', blank=True)
     grupo = models.IntegerField("Grupo", max_length=2, choices=GRUPO, default=0)
     slug = models.CharField(max_length=100, blank=True)
     user = models.OneToOneField(User)
@@ -42,7 +46,8 @@ class UserProfile(SlugMixin, models.Model):
         super(UserProfile, self).save(*args, **kwargs)
 
     def image_avatar_admin(self):
-        return '<img src="%s">' % self.avatar.url
+#        return '<img src="%s">' % self.avatar.url
+        return '<img src="%s">' % get_thumbnailer(self.avatar)['avatar'].url
 
     image_avatar_admin.allow_tags = True
     image_avatar_admin.admin_order_field = 'avatar'

@@ -44,6 +44,7 @@ INSTALLED_APPS = (
     'compradores',
     'userprofiles',
     'session_security',
+    'easy_thumbnails',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -97,3 +98,15 @@ USE_TZ = True
 
 
 # AUTH_USER_MODEL = "userprofiles.UserProfile"
+
+# ----------easy_thumbnails----------
+THUMBNAIL_ALIASES = {
+    'userprofiles.UserProfile.avatar': {
+        'avatar': {'size': (128, 128), 'quality': 90, 'subsampling': 2},
+    },
+}
+
+THUMBNAIL_EXTENSION = 'jpg'
+THUMBNAIL_HIGH_RESOLUTION = True
+THUMBNAIL_HIGHRES_INFIX = '_2x'
+# ----------easy_thumbnails----------
