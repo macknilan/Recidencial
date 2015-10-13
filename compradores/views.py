@@ -22,8 +22,8 @@ def CompradorCreateDef(request, slug):
             comprador.userprofile = UserProfile.objects.get(slug=slug)
             comprador.save()
             return HttpResponseRedirect(reverse('casageneralcreate',   kwargs={'slug': slug, 'pkslug': comprador.id}))
-            """return HttpResponseRedirect(reverse('casageneralcreate',  args=(slug, comprador.id,)))"""
-            """return HttpResponseRedirect(reverse('profile', kwargs={'slug': slug}))"""
+#           return HttpResponseRedirect(reverse('casageneralcreate',  args=(slug, comprador.id,)))
+#           return HttpResponseRedirect(reverse('profile', kwargs={'slug': slug}))
 
     else:
         form = CompradorCreateForm()
@@ -39,8 +39,10 @@ class CompradorListView(LoginRequiredMixin, ListView):
 
     def get_queryset(self):
         if self.kwargs.get('asesor'):
-            # queryset = Comprador.objects.filter()
-            # PARA LISTAR LOS RELACIONADOS CON EL ASESOR SE TOMAN DE UNA LISTA []
+#            queryset = Comprador.objects.filter()
+            """
+            PARA LISTAR LOS RELACIONADOS CON EL ASESOR SE TOMAN DE UNA LISTA []
+            """
             queryset = self.model.objects.filter(comprador__userprofile__slug=self.kwargs['asesor'])
         else:
             queryset = super(CompradorListView, self).get_queryset()

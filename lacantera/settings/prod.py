@@ -33,13 +33,14 @@ INSTALLED_APPS += (
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'lacanteradb',
-        'USER': 'lacanterauser2015',
-        'PASSWORD': 'veHEeRC2bwuqCJy',
+        'NAME': os.environ['LACANTERABD'],
+        'USER': os.environ['LACANTERAUSER'],
+        'PASSWORD': os.environ['LACANTERABDPWS'],
         'HOST': 'localhost',
         'PORT': '',
     }
 }
+
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'lacantera/static'),

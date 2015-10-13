@@ -72,31 +72,32 @@ class CasaMovimiento(models.Model):
 
     def __unicode__(self):
         return str(self.monto_credito)
-
-#        return str("%.2f - %s - %.2f - %.2f - %.2f - %.2f - %s - %s - %d - %d - %.2f - \
-#                %.2f - %.2f - %.2f - %.2f - %.2f - %.2f - %.2f - %s - %.2f - %.2f - \
-#                %.2f - %.2f" % (
-#                                        self.monto_credito,
-#                                        self.fecha_de_apartado,
-#                                        self.monto_apartado,
-#                                        self.enganche,
-#                                        self.infonavit_foviste,
-#                                        self.banco,
-#                                        self.fecha_programada_firma,
-#                                        self.fecha_de_firma,
-#                                        self.dias_transcurridos,
-#                                        self.dias_de_retraso,
-#                                        self.diferencia_a_pagar,
-#                                        self.importe_tot_venta,
-#                                        self.importe_tot_vendido,
-#                                        self.importe_tot_cobrado,
-#                                        self.importe_tot_cobrar,
-#                                        self.importe_tot_vender,
-#                                        self.pago_adeu_cret_puente,
-#                                        self.base_cret_puente,
-#                                        self.tipo_credito,
-#                                        self.presupuesto_comision,
-#                                        self.pagado_acum_comi,
-#                                        self.faltante_x_pagar,
-#                                        self.comi_ecu,
-#                                    ))
+"""
+        return str("%.2f - %s - %.2f - %.2f - %.2f - %.2f - %s - %s - %d - %d - %.2f - \
+                %.2f - %.2f - %.2f - %.2f - %.2f - %.2f - %.2f - %s - %.2f - %.2f - \
+                %.2f - %.2f" % (
+                                        self.monto_credito,
+                                        self.fecha_de_apartado,
+                                        self.monto_apartado,
+                                        self.enganche,
+                                        self.infonavit_foviste,
+                                        self.banco,
+                                        self.fecha_programada_firma,
+                                        self.fecha_de_firma,
+                                        self.dias_transcurridos,
+                                        self.dias_de_retraso,
+                                        self.diferencia_a_pagar,
+                                        self.importe_tot_venta,
+                                        self.importe_tot_vendido,
+                                        self.importe_tot_cobrado,
+                                        self.importe_tot_cobrar,
+                                        self.importe_tot_vender,
+                                        self.pago_adeu_cret_puente,
+                                        self.base_cret_puente,
+                                        self.tipo_credito,
+                                        self.presupuesto_comision,
+                                        self.pagado_acum_comi,
+                                        self.faltante_x_pagar,
+                                        self.comi_ecu,
+                                    ))
+"""

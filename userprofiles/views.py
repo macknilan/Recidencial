@@ -28,9 +28,14 @@ class LoginView(FormView):
 
         return super(LoginView, self).form_valid(form)
 
-    def get_context_data(self, **kwargs):  # PASAR VARIABLES AL TEMPLATE
-        context = super(LoginView, self).get_context_data(
-            **kwargs)  # SUPER DEL PADRE
+    def get_context_data(self, **kwargs):  
+        """
+        PASAR VARIABLES AL TEMPLATE
+        """
+        context = super(LoginView, self).get_context_data(**kwargs)
+        """
+        SUPER DEL PADRE
+        """
         is_auth = False
         name = None
 
@@ -53,7 +58,10 @@ class LoginView(FormView):
 class ProfileView(LoginRequiredMixin, TemplateView):
     template_name = 'userprofile.html'
 
-    def get_context_data(self, **kwargs):  # PASAR VARIABLES AL TEMPLATE
+    def get_context_data(self, **kwargs):  
+        """
+        PASAR VARIABLES AL TEMPLATE
+        """
         context = super(ProfileView, self).get_context_data(**kwargs)
 
         if self.request.user.is_authenticated():
@@ -62,8 +70,10 @@ class ProfileView(LoginRequiredMixin, TemplateView):
             return context
 
     def get_userprofile(self):
+        """
+        ESTA FUNCION LO UNICO QUE HACE ES TRAER EL USERPROFILE O USER
+        """
         return self.request.user.userprofile
-        # ESTA FUNCION LO UNICO QUE HACE ES TRAER EL USERPROFILE O USER
 
 
 class HomeRedirectView(RedirectView):

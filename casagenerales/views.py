@@ -30,8 +30,9 @@ def CreateFormCasaGeneralCasaMovimientoDef(request, slug, pkslug):
     if request.method == 'POST':
         if all([general_form.is_valid(), movimiento_form.is_valid()]):
             general = general_form.save(commit=False)
-            # GUARDATE, SALVATE, PERO NO TE INSERTES EN LA B.D. - SE INSTANCIA
-            # EL OBJ
+            """
+            GUARDATE, SALVATE, PERO NO TE INSERTES EN LA B.D. - SE INSTANCIA EL OBJ
+            """
             movimiento = movimiento_form.save(commit=False)
             general.comprador = Comprador.objects.get(pk=pkslug)
             movimiento.comprador = Comprador.objects.get(pk=pkslug)

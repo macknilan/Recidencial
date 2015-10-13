@@ -6,7 +6,4 @@ urlpatterns = patterns('',
      url(r'^casageneralcreate/(?P<slug>[\w\-]+)/(?P<pkslug>\d+)/$', CreateFormCasaGeneralCasaMovimientoDef, name='casageneralcreate'),
      url(r'^casageneralupdate/(?P<slug>[\w\-]+)/(?P<pkslug>\d+)/$', UpdateFormCasaGeneralCasaMovimientoDef, name='casageneralupdate'),
      url(r'^clientlistdetail/(?P<slug>[\w\-]+)/$', CompradorGeneralMovimientoList.as_view(), name='clientlistdetail'),
-#    url(r'^userupdate/(?P<slug>[\w\-]+)/$', UserUpdateView.as_view(), name='userupdate'),
-#    url(r'^userprofileupdate/(?P<slug>[\w\-]+)/$', UserProfileUpdateView.as_view(), name='userprofileupdate'),
-#    url(r'^userprofiledetail/(?P<slug>[\w\-]+)/$', UserProfileDetailView.as_view(), name='userprofiledetail'),
 )
